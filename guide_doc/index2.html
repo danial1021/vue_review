@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue test</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id='app'>
+        <div ref="msg">{{ msg }}</div>
+        <div ref="div"></div>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'Hello Vue!',
+            },
+            beforeCreate () {
+                console.log('beforeCreate!', this.msg)
+                // beforeCreate 는 메세지가 뭔지 모름
+            },
+            created () {
+                console.log('created!', this.msg)
+            },
+            beforeMount () {
+                console.log('beforeMount', this.$refs.div)
+                // 아직 html 요소와 연결되지 않아있어 undefined
+            },
+            mounted () {
+                console.log('Mounted', this.$refs.div)
+            },
+            beforeUpdate () {
+                console.log('beforeUpdate!', this.$refs.mgs.innerText)
+                // beforeUpdate! Hello Vue!가 실행된다 -> 랜더링 되기 직전
+            },
+            updated () {
+                console.log('updated!', this.$refs.mgs.innerText)
+            },
+            beforeDestroy () {
+                console.log('beforeDestroy!')
+            },
+            destroyed () {
+                console.log('destroyed')
+            }
+        }) 
+    </script>
+</body>
+</html>
