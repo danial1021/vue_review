@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue test</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>{{ reversedMsg }}</div>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'Hello Vue!'
+            },
+            computed: { 
+                // reverseMsg와 같은 computed_data의 값을 할당해야 하는 경우가 생김 getter와 setter(리턴 필요 x) 로직으로
+                reversedMsg: {
+                    // reversedMsg () {
+                    //     return this.msg.split('').reverse().join('')    
+                    // },
+                    
+                    // 위아래 같은 내용
+
+                    // Getter
+                    get () {
+                        return this.msg.split('').reverse().join('')    
+                    },
+                    // Setter
+                    set (value) {
+                        this.msg = value
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
