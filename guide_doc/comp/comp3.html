@@ -11,7 +11,7 @@
         <my-comp :my-msg="message" @my-event="updateMsg"></my-comp>
     </div>
 </div>
-
+<!-- 자식 컴포넌트에서 값 직접 바꾸면 x -> 부모 컴포넌트에서 바꿔야 함 -->
     <script>
         Vue.component('my-comp', {
             template: '<div @click="updateMsg">{{ myMsg }}</div>',
